@@ -1,0 +1,24 @@
+$:.push File.expand_path('../lib', __FILE__)
+require 'accessible-hash/version'
+
+Gem::Specification.new do |s|
+	s.name        = 'accessible-hash'
+	s.version     = AccessibleHash::VERSION
+	s.platform    = Gem::Platform::RUBY
+	s.authors     = ['Connor Prussin']
+	s.email       = %w(cprussin@bci-incorporated.com)
+	s.homepage    = 'https://github.com/cprussin/accessible-hash'
+	s.summary     = %q(A hash with more accessibility.)
+	s.licenses    = %w(WTFPL)
+
+	readme        = File.open('README', 'r').each_line.to_a
+	description   = readme.index("## Description\n") + 2
+	install       = readme.index("## Install\n") - 1 - description
+	s.description = readme[description, install].join.gsub("\n", ' ').chomp(' ')
+
+	s.add_development_dependency 'rspec', '~> 2.14', '>= 2.14.1'
+
+	s.files         = `git ls-files`.split($/)
+	s.test_files    = `git ls-files -- spec/*`.split($/)
+	s.require_paths = %w(lib)
+end
