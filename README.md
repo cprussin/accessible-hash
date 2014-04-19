@@ -1,5 +1,7 @@
 # Accessible Hash
 
+http://rubygems.org/gems/accessible-hash
+
 ## Description
 
 Accessible Hash is a simple wrapper around the built-in Ruby Hash that behaves
@@ -16,8 +18,8 @@ gem install accessible-hash
 
 or with Bundler (add to your `Gemfile`):
 
-```ruby
-gem accessible-hash
+```
+gem 'accessible-hash'
 ```
 
 ## Usage
