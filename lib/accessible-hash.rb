@@ -38,4 +38,9 @@ class AccessibleHash < Hash
 	def method_missing(method, *args, &block)
 		has_key?(method) ? self[method] : super
 	end
+
+	# Allow objects to return list their public methods as class keys
+	def self.keys
+		new.keys
+	end
 end

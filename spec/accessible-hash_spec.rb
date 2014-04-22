@@ -76,5 +76,9 @@ describe AccessibleHash do
 		let (:subject) {AccessibleHashDummy.new}
 
 		it_behaves_like 'an accessible hash'
+
+		it 'lists all methods as keys when asking for class keys' do
+			expect(AccessibleHashDummy.keys).to eq(%i(attr other nilattr))
+		end
 	end
 end
