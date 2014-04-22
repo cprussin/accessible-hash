@@ -30,7 +30,7 @@ class AccessibleHash < Hash
 
 	# Returns the keys and methods (not including methods in this class)
 	def keys
-		super + public_methods(false) - %i([] []= merge merge! keys method_missing)
+		super + self.class.keys
 	end
 
 	# Use hash access if the key exists because it can't be anywhere else;
@@ -41,6 +41,6 @@ class AccessibleHash < Hash
 
 	# Allow objects to return list their public methods as class keys
 	def self.keys
-		new.keys
+		instance_methods(false) - %i([] []= merge merge! keys method_missing)
 	end
 end
