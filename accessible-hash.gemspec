@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
 	s.summary     = %q(A hash with more accessibility.)
 	s.licenses    = %w(WTFPL)
 
-	readme        = File.open('README', 'r').each_line.to_a
+	readme        = File.open('README.md', 'r').each_line.to_a
 	description   = readme.index("## Description\n") + 2
 	install       = readme.index("## Install\n") - 1 - description
 	s.description = readme[description, install].join.gsub("\n", ' ').chomp(' ')
