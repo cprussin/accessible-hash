@@ -1,6 +1,6 @@
 # Accessible Hash
 
-[![Gem Version](https://badge.fury.io/rb/token.svg)](http://rubygems.org/gems/accessible-hash)
+[![Gem Version](https://badge.fury.io/rb/accessible-hash.svg)](http://rubygems.org/gems/accessible-hash)
 
 ## Description
 
