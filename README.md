@@ -18,7 +18,7 @@ gem install accessible-hash
 
 or with Bundler (add to your `Gemfile`):
 
-```
+```ruby
 gem 'accessible-hash'
 ```
 
