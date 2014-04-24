@@ -18,14 +18,14 @@ class AccessibleHash < Hash
 		super(elem.to_sym)
 	end
 
-	# Merge hashes, again converting keys to symbols
-	['', '!'].each do |bang|
-		define_method "merge#{bang}" do |other|
-			super(other.inject({}) do |hash, (key, value)|
-				hash[key.to_sym] = value
-				hash
-			end)
-		end
+	# Merge hashes, converting keys to symbols
+	def merge(other)
+		super(keys_to_symbols(other))
+	end
+
+	# Merge into this hash, again converting keys to symbols
+	def merge!(other)
+		super(keys_to_symbols(other))
 	end
 
 	# Returns the keys and methods (not including methods in this class)
@@ -42,5 +42,14 @@ class AccessibleHash < Hash
 	# Allow objects to return list their public methods as class keys
 	def self.keys
 		instance_methods(false) - %i([] []= merge merge! keys method_missing)
+	end
+
+	private
+
+	def keys_to_symbols(hash)
+		hash.inject({}) do |hsh, (key, value)|
+			hsh[key.to_sym] = value
+			hsh
+		end
 	end
 end
