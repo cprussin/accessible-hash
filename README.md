@@ -5,7 +5,7 @@
 ## Description
 
 Accessible Hash is a simple wrapper around the built-in Ruby Hash that behaves
-like a HashWithIndifferentAccess and also allows `object.attribute` style
+like a `HashWithIndifferentAccess` and also allows `object.attribute` style
 access.
 
 ## Install
