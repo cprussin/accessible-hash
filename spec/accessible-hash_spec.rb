@@ -39,11 +39,30 @@ describe AccessibleHash do
 		end
 
 		it 'lists all keys as symbols' do
-			expect(subject.keys).to eq(%i(attr other nilattr))
+			expect(subject.keys.length).to be(3)
+			expect(subject.keys).to include(:attr)
+			expect(subject.keys).to include(:other)
+			expect(subject.keys).to include(:nilattr)
 		end
 
-		it 'does not stack overflow on undefined call' do
+		it 'raises NoMethodError on undefined call' do
 			expect{subject.bla}.to raise_error(NoMethodError)
+		end
+
+		it 'raises NoMethodError on undefined lookup' do
+			expect{subject[:bla]}.to raise_error(NoMethodError)
+		end
+
+		it 'sets values using string keys with []=' do
+			expect{subject[:bla]}.to raise_error(NoMethodError)
+			subject['bla'] = 'value'
+			expect(subject[:bla]).to eq('value')
+		end
+
+		it 'sets values using symbol keys with []=' do
+			expect{subject[:bla]}.to raise_error(NoMethodError)
+			subject[:bla] = 'value'
+			expect(subject[:bla]).to eq('value')
 		end
 
 		shared_examples_for 'a merging AccessibleHash' do
