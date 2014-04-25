@@ -1,3 +1,4 @@
 class AccessibleHash
-	VERSION = '1.0.4'
+	# The current release version of the library
+	VERSION = '1.0.5'
 end
