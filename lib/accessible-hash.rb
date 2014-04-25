@@ -76,8 +76,8 @@ class AccessibleHash < Hash
 	# @param hash [Hash] the hash whose keys need converting
 	# @return [Hash] the converted hash with all symbol keys
 	def keys_to_symbols(hash)
-		hash.inject({}) do |hsh, (key, value)|
-			hsh[key.to_sym] = value
+		hash.keys.inject({}) do |hsh, key|
+			hsh[key.to_sym] = hash[key]
 			hsh
 		end
 	end

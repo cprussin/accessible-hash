@@ -45,6 +45,52 @@ describe AccessibleHash do
 		it 'does not stack overflow on undefined call' do
 			expect{subject.bla}.to raise_error(NoMethodError)
 		end
+
+		shared_examples_for 'a merging AccessibleHash' do
+			it 'merges generating a new AccessibleHash' do
+				merged = subject.merge(hash)
+				expect(merged).not_to be(subject)
+				expect(merged.keys.length).to be(4)
+				expect(merged.keys).to include(:attr)
+				expect(merged.keys).to include(:other)
+				expect(merged.keys).to include(:nilattr)
+				expect(merged.keys).to include(:key)
+			end
+
+			it 'merges extending itself' do
+				expect(subject.keys.length).to be(3)
+				subject.merge!(hash)
+				expect(subject.keys.length).to be(4)
+				expect(subject.keys).to include(:attr)
+				expect(subject.keys).to include(:other)
+				expect(subject.keys).to include(:nilattr)
+				expect(subject.keys).to include(:key)
+			end
+		end
+
+		context 'with a Hash with symbol keys' do
+			it_behaves_like 'a merging AccessibleHash' do
+				let(:hash) {{key: 'value'}}
+			end
+		end
+
+		context 'with a Hash with string keys' do
+			it_behaves_like 'a merging AccessibleHash' do
+				let(:hash) {{'key' => 'value'}}
+			end
+		end
+
+		context 'with another AccessibleHash' do
+			class AccessibleHashMergingDummy < AccessibleHash
+				def key
+					'value'
+				end
+			end
+
+			it_behaves_like 'a merging AccessibleHash' do
+				let(:hash) {AccessibleHashMergingDummy.new}
+			end
+		end
 	end
 
 	context 'with a string hash' do
