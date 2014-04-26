@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
 	s.platform    = Gem::Platform::RUBY
 	s.authors     = ['Connor Prussin']
 	s.email       = %w(cprussin@bci-incorporated.com)
-	s.homepage    = 'https://github.com/cprussin/accessible-hash'
+	s.homepage    = 'http://cprussin.net/#accessible-hash'
 	s.summary     = %q(A hash with more accessibility.)
 	s.licenses    = %w(WTFPL)
 
