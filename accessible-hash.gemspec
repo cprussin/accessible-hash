@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
 	s.platform    = Gem::Platform::RUBY
 	s.authors     = ['Connor Prussin']
 	s.email       = %w(cprussin@bci-incorporated.com)
-	s.homepage    = 'http://cprussin.net/#accessible-hash'
-	s.summary     = %q(A hash with more accessibility.)
+	s.homepage    = 'http://cprussin.net/accessible-hash'
+	s.summary     = %q(A simple wrapper around the built-in Ruby Hash that behaves like a HashWithIndifferentAccess and also allows object.attribute style access.)
 	s.licenses    = %w(WTFPL)
 
 	readme        = File.open('README.md', 'r').each_line.to_a
