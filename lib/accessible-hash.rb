@@ -57,7 +57,7 @@ class AccessibleHash < Hash
 	# @param method [Symbol] the name of the attribute/method being looked up
 	# @return the value with the given method name as the key
 	# @raise [NoMethodError] if no such key exists
-	def method_missing(method)
+	def method_missing(method, *args)
 		has_key?(method) ? self[method] : super
 	end
 

@@ -49,6 +49,10 @@ describe AccessibleHash do
 			expect{subject.bla}.to raise_error(NoMethodError)
 		end
 
+		it 'raises NoMethodError on undefined call with arguments' do
+			expect{subject.bla(:argument)}.to raise_error(NoMethodError)
+		end
+
 		it 'raises NoMethodError on undefined lookup' do
 			expect{subject[:bla]}.to raise_error(NoMethodError)
 		end
