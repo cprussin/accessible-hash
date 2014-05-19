@@ -128,6 +128,16 @@ describe AccessibleHash do
 		it_behaves_like 'an accessible hash'
 	end
 
+	context 'with a mixed, deep hash' do
+		let(:hash) {AccessibleHash.new(attr: 'value', 'otherattr' => {value: 'innerhash'})}
+
+		it 'generates a new deep accessible hash' do
+			expect(hash.attr).to eq('value')
+			expect(hash.otherattr).to be_a(AccessibleHash)
+			expect(hash.otherattr.value).to eq('innerhash')
+		end
+	end
+
 	context 'with an object' do
 		class AccessibleHashDummy < AccessibleHash
 			def attr

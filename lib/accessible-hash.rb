@@ -7,7 +7,14 @@ class AccessibleHash < Hash
 	#
 	# @param fields [Hash] the fields to initialize when creating the object
 	def initialize(fields = {})
-		self.merge!(fields)
+		self.merge!(fields.inject({}) do |hsh, (key, value)|
+			if value.is_a? Hash
+				hsh[key] = AccessibleHash.new(value)
+			else
+				hsh[key] = value
+			end
+			hsh
+		end)
 	end
 
 	# Retrieves the requested value from the object.
