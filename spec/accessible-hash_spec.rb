@@ -15,6 +15,15 @@ describe AccessibleHash do
 			it 'allows access using send' do
 				expect(subject.send(key)).to eq(value)
 			end
+
+			it 'properly injects all attributes' do
+				expected = {key.to_sym => value}
+				injected = subject.inject({}) do |hsh, (k, v)|
+					hsh[k] = v if k == key.to_sym
+					hsh
+				end
+				expect(injected).to eq(expected)
+			end
 		end
 
 		context 'with a normal value' do

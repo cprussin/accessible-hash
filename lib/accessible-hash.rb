@@ -51,6 +51,15 @@ class AccessibleHash < Hash
 		super(keys_to_symbols(other))
 	end
 
+	# Iterate over each value in this object, yielding the block and passing the
+	# return value into the next yield.
+	#
+	# @param obj the initial value for the accumulator
+	def inject(obj)
+		self.keys.each {|key| obj = yield(obj, [key, self[key]])}
+		obj
+	end
+
 	# Returns the keys and methods of the object.
 	#
 	# @return [Array<Symbol>] a list of all keys for this object
@@ -73,7 +82,7 @@ class AccessibleHash < Hash
 	#
 	# @return [Array<Symbol>] a list of methods for the class
 	def self.keys
-		instance_methods(false) - %i([] []= merge merge! keys method_missing)
+		instance_methods(false) - %i([] []= merge merge! inject keys method_missing)
 	end
 
 	private
