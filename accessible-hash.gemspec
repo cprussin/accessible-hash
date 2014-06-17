@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
 	s.version     = AccessibleHash::VERSION
 	s.platform    = Gem::Platform::RUBY
 	s.authors     = ['Connor Prussin']
-	s.email       = %w(cprussin@bci-incorporated.com)
-	s.homepage    = 'http://cprussin.net/accessible-hash'
+	s.email       = %w(connor@prussin.net)
+	s.homepage    = 'https://connor.prussin.net/accessible-hash'
 	s.summary     = %q(A simple wrapper around the built-in Ruby Hash that behaves like a HashWithIndifferentAccess and also allows object.attribute style access.)
 	s.licenses    = %w(WTFPL)
 
